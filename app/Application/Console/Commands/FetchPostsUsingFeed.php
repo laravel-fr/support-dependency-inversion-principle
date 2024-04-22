@@ -16,11 +16,11 @@ class FetchPostsUsingFeed extends Command
         $items = $reader->fetch('https://laravel-france.com/rss');
 
         foreach ($items as $item) {
-            $this->createOrUpdatePost($item);
+            $this->updateOrCreatePost($item);
         }
     }
 
-    private function createOrUpdatePost(ItemInterface $item): void
+    private function updateOrCreatePost(ItemInterface $item): void
     {
         Post::updateOrCreate(
             [
