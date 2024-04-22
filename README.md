@@ -1,0 +1,1 @@
+# support-dependency-inversion-principle
