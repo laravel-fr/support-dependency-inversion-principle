@@ -7,7 +7,7 @@ use App\Infrastructure\DataTransferObjects\ReaderItem;
 use App\Application\Interfaces\Services\ReaderInterface;
 use App\Application\Interfaces\DataTransferObjects\ItemInterface;
 
-class Reader implements ReaderInterface
+class FeedIoReader implements ReaderInterface
 {
     public function __construct(
         protected FeedIo $feedIo,

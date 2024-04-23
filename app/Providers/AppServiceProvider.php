@@ -2,18 +2,18 @@
 
 namespace App\Providers;
 
-use GuzzleHttp\Client as GuzzleHttp;
 use FeedIo\FeedIo;
-use FeedIo\Adapter\Http\Client as FeedIoClient;
+use GuzzleHttp\Client as GuzzleHttp;
 use Illuminate\Foundation\Application;
-use App\Infrastructure\Services\Reader;
 use Illuminate\Support\ServiceProvider;
+use App\Infrastructure\Services\FeedIoReader;
+use FeedIo\Adapter\Http\Client as FeedIoClient;
 use App\Application\Interfaces\Services\ReaderInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
     public $bindings = [
-        ReaderInterface::class => Reader::class,
+        ReaderInterface::class => FeedIoReader::class,
     ];
 
     /**
@@ -27,7 +27,5 @@ class AppServiceProvider extends ServiceProvider
 
             return new FeedIo($client);
         });
-
-        $this->app->bind(ReaderInterface::class, Reader::class);
     }
 }
